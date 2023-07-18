@@ -41,29 +41,3 @@ Finally, a time-distributed dense layer with softmax activation is used to gener
 This model is underperforming and i suspect it may be due to the sheer size of the data set i am using as it is well known for summarisers to fail when the data size is very large or some issue with the embeddings i have tried numerous ways to come up with ways to to improve the mode but i have not recieved any significant improvement.
 
 
-# Model no 02
-I have tried to implement another simpler text summeriser using only 'nltk' libraries(no machine learning models used)
-In the context of text summarization, the algorithm is used to rank sentences in a document based on their importance.
-
-following steps are carried out to achieve this:
-
-* Fetching Articles from Wikipedia by data scraping
-* Preprocessing 
-* Tokenisation
-* Find Weighted Frequency of Occurrence
-
-Next we need to find the weighted frequency of occurrences of all the words. We can find the weighted frequency of each word by dividing its frequency by the frequency of the most occurring word. The following table contains the weighted frequencies for each word
-
-
-To find the weighted frequency, we can simply divide the number of occurances of all the words by the frequency of the most occurring word
-
-* Calculating Sentence Scores
-
-We have now calculated the weighted frequencies for all the words. Now is the time to calculate the scores for each sentence by adding weighted frequencies of the words that occur in that particular sentence. We do not want very long sentences in the summary, therefore, we calculate the score for only sentences with less than 20 words 
-
-* Getting the Summary
-
-Now we have the sentence_scores dictionary that contains sentences with their corresponding score. To summarize the article, we can take top N sentences with the highest scores. The following script retrieves top 7 sentences and prints them on the screen.
-
-we use the heapq library and call its nlargest function to retrieve the top 7 sentences with the highest scores.
-
